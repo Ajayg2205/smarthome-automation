@@ -8,7 +8,10 @@ class MQTTService:
 
     @classmethod
     def start(cls):
-        cls._client = mqtt.Client(client_id="django-smarthome-backend")
+        cls._client = mqtt.Client(
+    mqtt.CallbackAPIVersion.VERSION1,
+    client_id="django-smarthome-backend"
+)
         cls._client.on_connect = cls._on_connect
         cls._client.on_message = cls._on_message
         try:
