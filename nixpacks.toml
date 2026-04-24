@@ -1,11 +1,11 @@
 [phases.setup]
-nixPkgs = ["python313", "pkg-config", "gcc"]
+nixPkgs = ["python313", "python313Packages.pip", "pkg-config", "gcc", "libmysqlclient"]
 
 [phases.install]
-cmds = ["pip install -r requirements.txt"]
+cmds = ["python3.13 -m pip install -r requirements.txt"]
 
 [phases.build]
-cmds = ["python manage.py collectstatic --noinput"]
+cmds = ["python3.13 manage.py collectstatic --noinput"]
 
 [start]
-cmd = "daphne -b 0.0.0.0 -p $PORT smarthome.asgi:application"
+cmd = "python3.13 -m daphne -b 0.0.0.0 -p $PORT smarthome.asgi:application"
