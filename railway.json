@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "daphne -b 0.0.0.0 -p $PORT smarthome.asgi:application",
+    "startCommand": "python manage.py migrate && daphne -b 0.0.0.0 -p $PORT smarthome.asgi:application",
     "restartPolicyType": "ON_FAILURE"
   }
 }
